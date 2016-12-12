@@ -1,6 +1,10 @@
-assets:     
+assets:
   - dev.sql.gz
+  - files.tgz
 steps:
+  - name: Load files
+    plugin: Shell
+    command: 'cd sites/default && tar -zxf $ASSET_DIR/files.tgz'
   - name: Probo.CI site setup
     plugin: Drupal
     database: dev.sql.gz
